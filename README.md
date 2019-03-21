@@ -1,6 +1,6 @@
 Flask restful api with blue_print
 
-This application is for a crud for a user wsith the following functionalitie
+This application is a crud for a user wsith the following functionalitie
 1- Users should be able to create a password-protected profile
 2- Users should be able to log in to their profile
 3- Users should be able to search other users and list the results
