@@ -25,11 +25,11 @@ Build the modules and subsections using docker-compose
 
 Recreate the needed databases
 
-\$ docker-compose -f docker-compose-dev.yml run friends python manage.py recreate-db
+\$ docker-compose -f docker-compose-dev.yml run friendbook python manage.py recreate-db
 
 Populate the database with dummy (seed) data
 
-\$ docker-compose -f docker-compose-dev.yml run friends python manage.py seed-db
+\$ docker-compose -f docker-compose-dev.yml run friendbook python manage.py seed-db
 
 Run the project
 

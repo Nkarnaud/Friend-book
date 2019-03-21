@@ -10,7 +10,7 @@ from functools import wraps
 
 from flask import request, jsonify
 
-from project.api.models import FriendBook
+from project.models.models import FriendBook
 
 
 def authenticate(f):

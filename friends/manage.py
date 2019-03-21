@@ -33,7 +33,7 @@ def seed_db():
         gender='M',
         tell='1254863458'
         ))
-    db.session.add(CurrencyData(
+    db.session.add(FriendBook(
         firstname='justatest',
         lastname= 'testing',
         dateofbirth= '02/09/1986',

@@ -21,7 +21,7 @@ class FriendBook(db.Model):
     tell = db.Column(db.String(128))
 
 
-    def __init__(self, firstname, lastname, dateofbirth, email, password, gender, tell)
+    def __init__(self, firstname, lastname, dateofbirth, email, password, gender, tell):
         self.firstname = firstname
         self.lastname = lastname
         self.dateofbirth = datetime.datetime.strptime(
@@ -33,9 +33,9 @@ class FriendBook(db.Model):
         self.gender = gender
         self.tell = tell
 
-    def to_json_customer(self):
+    def to_json_friends(self):
         return {
-            'id': self.customer_id,
+            'id': self.id,
             'firstname': self.firstname,
             'lastname': self.lastname,
             'date_of_birth': self.dateofbirth,

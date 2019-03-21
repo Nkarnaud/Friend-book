@@ -11,6 +11,7 @@ from flask import Blueprint, jsonify, request, render_template
 from project.models.models import FriendBook
 from project import db
 from sqlalchemy import exc
+from project.api.utils import authenticate
 
 
 friends_blueprint = Blueprint('friends', __name__, template_folder='../templates')
@@ -81,7 +82,7 @@ def logout_user(resp):
 
 
 @friends_blueprint.route('/friends/add_friends', methods=['POST'])
-@authenticate
+#@authenticate
 def add_friends(resp):
     # get post data
     post_data = request.get_json()
@@ -95,9 +96,9 @@ def add_friends(resp):
         if not friend:
             # add new profile to db
             new_friend = FriendBook(
-                firstname = post_data.get('firstname')
+                firstname = post_data.get('firstname'),
                 lastname = post_data.get('lastname'),
-                email = post_data.get('email')
+                email = post_data.get('email'),
                 dateofbirth = post_data.get('dateofbirth'),
                 gender=post_data.get('gender'),
                 tell=post_data.get('tell'),
@@ -119,7 +120,7 @@ def add_friends(resp):
         return jsonify(response_object), 400
 
 @friends_blueprint.route('/friends/<id>', methods=['GET'])
-@authenticate
+#@authenticate
 def get_single_firend(id):
     """Get    single    user    details"""
     response_object = {
@@ -151,20 +152,20 @@ def get_single_firend(id):
         return jsonify(response_object), 400
 
 @friends_blueprint.route('/friends/lists', methods=['GET'])
-@authenticate
+#@authenticate
 def get_all_customer():
     # This function provide the list of all customers in the system
         response_object = {
             'status': 'success',
             'data': {
-                'users': [friend.to_json_customer() for friend in FriendBook.query.all()]
+                'users': [friend.to_json_friends() for friend in FriendBook.query.all()]
             }
         }
         return jsonify(response_object), 200
 
 
-@friends_blueprint.route('/friend/delete/<id>', methods=['DELETE'])
-@authenticate
+@friends_blueprint.route('/friends/delete/<id>', methods=['DELETE'])
+#@authenticate
 def delete(id):
     """To delete a user in the systeme"""
     response_object = {
