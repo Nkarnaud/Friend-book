@@ -1,0 +1,33 @@
+version: "3.4"
+
+services:
+  friendbook:
+    container_name: friendbook
+    build:
+      context: ./friends
+      dockerfile: Dockerfile
+    volumes:
+      - "./friends/usr/src/app"
+    ports:
+      - 5001:5000
+    environment:
+      - FLASK_APP=project/__init__.py
+      - FLASK_DEBUG=1
+      - APP_SETTINGS=project.config.DevelopmentConfig
+      - DATABASE_URL=postgres://postgres:postgres@friendbook-db:5432/friendbook_data
+      - SECRET_KEY=my_precious
+    depends_on:
+      - friendbook-db
+    links:
+      - friendbook-db
+
+  friendbook-db:
+    container_name: friendbook-db
+    build:
+      context: ./friends/project/db
+      dockerfile: Dockerfile
+    ports:
+      - 5435:5432
+    environment:
+      - POSTGRES_PROFILE=postgres
+      - POSTGRES_PASSWORD=postgres

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Leapture Customer Information</title>
+    <!-- meta -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- styles -->
+    <link
+            href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            rel="stylesheet"
+    >
+    {% block css %}{% endblock %}
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <br>
+            <h1>All Customers</h1>
+            <hr>
+            <br>
+            <form action="/" method="POST">
+                <div class="form-group">
+                    Firstname<input
+                            name="firstname" class="form-control input-lg"
+                            type="text" placeholder="Enter your firstname" required>
+                </div>
+                <div class="form-group">
+                    Lastname<input
+                            name="lastname" class="form-control input-lg"
+                            type="text" placeholder="Enter your lastname" required>
+                </div>
+                <div class="form-group">
+                    Date of Birth<input
+                            name="dateofbirth" class="form-control input-lg"
+                            type="text" placeholder="Enter your date of birth" required>
+                </div>
+                <div class="form-group">
+                    Email<input
+                            name="email" class="form-control input-lg"
+                            type="email" placeholder="Enter an email address" required>
+                </div>
+                <div class="form-group">
+                    Gender<input
+                            name="gender" class="form-control input-lg"
+                            type="text" placeholder="Enter your gender" required>
+                </div>
+                <div class="form-group">
+                    Government ID<input
+                            name="gov_id" class="form-control input-lg"
+                            type="text" placeholder="Enter your ID information" required>
+                </div>
+                <div class="form-group">
+                    <span class="form-control input-lg">
+                        Profile Picture <input type="file" name="profile_picture" required>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <span class="form-control input-lg">
+                        Selfie Picture <input type="file" name="selfie_pic" required>
+                    </span>
+                </div>
+                <input
+                        type="submit" class="btn btn-primary btn-lg btn-block"
+                        value="Submit">
+            </form>
+            <br>
+            <hr>
+            {% if customers %}
+            <ol>
+                {% for customer in customers %}
+                <li>{{customer.firstname}}</li>
+                {% endfor %}
+            </ol>
+            {% else %}
+            <p>No customers!</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+<!-- scripts -->
+<script
+        type="text/javascript"
+        src="//code.jquery.com/jquery-2.2.4.min.js"
+></script>
+<script
+        type="text/javascript"
+        src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+>
+</script>
+{% block js %}{% endblock %}
+</body>
+</html>
