@@ -1,4 +1,4 @@
-Flask restful api with blue_print
+Flask restful api with blueprint and docker
 
 This application is a crud for a user wsith the following functionalitie
 1- Users should be able to create a password-protected profile
